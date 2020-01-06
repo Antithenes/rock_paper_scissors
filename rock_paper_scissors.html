@@ -1,27 +1,40 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Page Title</title>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
 </head>
+
 <body>
   <script>
-    function computerPlay(){
-      let choice = Math.floor(Math.random()*number);
-      if (choice === 1){
-        return "Rock";
+    function computerPlay() {
+      let choice = Math.floor(Math.random() * 3);
+      console.log("choice " +choice)
+      if (choice === 1) {
+        return "rock";
       }
-      else if (choice === 2){
-        return "Paper";
+      else if (choice === 2) {
+        return "paper";
+      }
+      else if (choice === 3) {
+        return "scissors";
+      }
     }
-    else if (choice === 3){
-        return "Scissors";
+    function playRound(playerSelection, computerSelection) {
     }
-    function playRound (playerSelection, computerSelection){
+    function testInput(playerSelection){
+      while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors"){
+        console.log(playerSelection)
+        playerSelection = prompt("You didn't pick Rock, Paper or Scissors. Please Try again.").toLowerCase();
 
+      }
     }
-    let playerSelection = prompt("Roshambo what do you pick?");
-    let computerSelection = computerPlay;
+    let playerSelection = prompt("Roshambo what do you pick?").toLowerCase();
+
+    testInput(playerSelection);
+    let computerSelection = computerPlay();
   </script>
 </body>
+
 </html>
