@@ -10,30 +10,73 @@
   <script>
     function computerPlay() {
       let choice = Math.floor(Math.random() * 3);
-      console.log("choice " +choice)
-      if (choice === 1) {
+      if (choice === 0) {
         return "rock";
       }
-      else if (choice === 2) {
+      else if (choice === 1) {
         return "paper";
       }
-      else if (choice === 3) {
+      else if (choice === 2) {
         return "scissors";
       }
     }
     function playRound(playerSelection, computerSelection) {
+      console.log(playerSelection);
+      console.log(computerSelection);
+      let result;
+      if ((playerSelection === "rock") && (computerSelection === "scissors")) {
+        result = "You Won! Rock Beats Scissors";
+      }
+      else if (playerSelection === "scissors" && computerSelection === "paper") {
+        result = "You Won! Scissors Cuts Paper";
+      }
+      else if (playerSelection === "paper" && computerSelection === "rock") {
+        result = "You Won! Paper Covers Rock";
+      }
+      else if (playerSelection === "scissors" && computerSelection === "rock") {
+        result = "You Lost! Rock Beats Scissors";
+      }
+      else if (playerSelection === "paper" && computerSelection === "scissors") {
+        result = "You Lost! Scissors Cuts Paper";
+      }
+      else if (playerSelection === "rock" && computerSelection === "paper") {
+        result = "You Lost! Paper Covers Rock";
+      }
+      else if (playerSelection === "rock" && computerSelection === "rock") {
+        result = "You Tied! You both had Rock";
+      }
+      else if (playerSelection === "paper" && computerSelection === "paper") {
+        result = "You Tied! You both had Paper";
+      }
+      else if (playerSelection === "scissors" && computerSelection === "scissors") {
+        result = "You Tied! You both had Scissors";
+      }
+      else {
+        result = "there was some mistake";
+      }
+      return result;
     }
-    function testInput(playerSelection){
-      while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors"){
-        console.log(playerSelection)
+    function getInput() {
+      let playerSelection = prompt("Roshambo what do you pick?").toLowerCase();
+      //make sure they put in a valid rock paper or scissors
+      while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
         playerSelection = prompt("You didn't pick Rock, Paper or Scissors. Please Try again.").toLowerCase();
 
       }
+      return playerSelection;
     }
-    let playerSelection = prompt("Roshambo what do you pick?").toLowerCase();
 
-    testInput(playerSelection);
-    let computerSelection = computerPlay();
+function game(){
+    for (x = 0; x < 5; x++) {
+      
+      let playerSelection = getInput();  
+      let computerSelection = computerPlay();
+      result = playRound(playerSelection, computerSelection);
+      console.log(result);
+
+    }
+}
+game();
   </script>
 </body>
 
