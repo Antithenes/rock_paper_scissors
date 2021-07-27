@@ -72,16 +72,16 @@
       return playerSelection;
     }
     function scoreBoard(result){
-      let won = result.substr("Won")
+      console.log(result[0]+" Youre Score: "+result[1]+" Computer Score: "+result[2]);
     }
 
     function game() {
-      let result=["",0,0];
+      let result=["",0,0]; //winner staement, your score, computer score
       for (x = 0; x < 5; x++) {
         let playerSelection = getInput();
         let computerSelection = computerPlay();
         result = playRound(playerSelection, computerSelection, result);
-        console.log(result[0]+" Youre Score: "+result[1]+" Computer Score: "+result[2]);
+        scoreBoard(result);
 
       }
     }
